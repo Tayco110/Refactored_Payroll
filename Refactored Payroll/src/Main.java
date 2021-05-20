@@ -13,10 +13,8 @@ public class Main
        
         Scanner input = new Scanner(System.in);
         Schedule schedule = new Schedule();
-        Functionalities_Employee func = new Functionalities_Employee();
         
-
-        //Functionalities_Employee functionalities = new Functionalities_Employee();
+        Functionalities_Employee employee_Functionalities = new Functionalities_Employee();
         Functionalities_Schedule shedule_Functionalities = new Functionalities_Schedule();
 
         shedule_Functionalities.create_schedule(schedule,"monthly","friday");
@@ -57,7 +55,7 @@ public class Main
                 System.out.println("    -> commissioned");
                 System.out.println("    -> hourly");
                 employeetype = input.nextLine();
-                func.Register_employee(employeetype,idnumber);
+                employee_Functionalities.Register_employee(employeetype,idnumber);
                 idnumber++;
             }
             else if(controll == 2)
@@ -73,7 +71,7 @@ public class Main
                 System.out.printf("Enter the employee id: ");
                 id_controll = input.nextInt();
                 input.nextLine();
-                func.Remove_employee(employeetype,id_controll);
+                employee_Functionalities.Remove_employee(employeetype,id_controll);
             }
             else if(controll == 3)//only avaliable to employee's type hourly and to check out need check in first
             {
@@ -88,7 +86,7 @@ public class Main
                 System.out.printf("Enter the employee id: ");
                 id_controll = input.nextInt();
                 input.nextLine();
-                func.Add_timecard(employeetype,id_controll,day);
+                employee_Functionalities.Add_timecard(employeetype,id_controll,day);
             }
             else if(controll == 4)//only avaliable to emploee's type commissioned. the sail will bem aplied to the current day
             {
@@ -103,7 +101,7 @@ public class Main
                 System.out.printf("Enter the employee id: ");
                 id_controll = input.nextInt();
                 input.nextLine();
-                func.Add_sale(employeetype,id_controll,day);
+                employee_Functionalities.Add_sale(employeetype,id_controll,day);
             }
             else if(controll == 5)//only avaliable if the employee are part of the union
             {
@@ -118,7 +116,7 @@ public class Main
                 System.out.printf("Enter the employee id: ");
                 id_controll = input.nextInt();
                 input.nextLine();
-                func.Add_service(employeetype,id_controll);
+                employee_Functionalities.Add_service(employeetype,id_controll);
             }
             else if(controll == 6)//change an employee information only if he can be finded in the arraylist
             {
@@ -133,14 +131,14 @@ public class Main
                 System.out.printf("Enter the employee id: ");
                 id_controll = input.nextInt();
                 input.nextLine();
-                func.Change_employee(employeetype,id_controll);
+                employee_Functionalities.Change_employee(employeetype,id_controll);
             }
             else if(controll == 7)//print all the employees who need to be paid in the current day. the prited salary value is for 30 days but the calculated value depends on the schedule
             {
                 System.out.println("**********************************************************************");
                 System.out.println("                          Today's payments                            ");
                 System.out.println("**********************************************************************");
-                shedule_Functionalities.Payment(func.getHourlyState(),func.getCommissionedState(),func.getSalariedsState(),schedule,day,month);
+                shedule_Functionalities.Payment(employee_Functionalities.getHourlies(),employee_Functionalities.getCommissioneds(),employee_Functionalities.getSalarieds(),schedule,day,month);
                 day++;
                 if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
                 {
@@ -209,15 +207,15 @@ public class Main
                     input.nextLine();
                     if(employeetype.equals("salaried"))
                     {
-                        shedule_Functionalities.change_Salaried_schedule(func.getSalariedsState(),schedule,id_controll);
+                        shedule_Functionalities.change_Salaried_schedule(employee_Functionalities.getSalarieds(),schedule,id_controll);
                     }
                     else if(employeetype.equals("commissioned"))
                     {
-                        shedule_Functionalities.change_Commissioned_schedule(func.getCommissionedState(),schedule,id_controll);
+                        shedule_Functionalities.change_Commissioned_schedule(employee_Functionalities.getCommissioneds(),schedule,id_controll);
                     }
                     else if(employeetype.equals("hourly"))
                     {
-                        shedule_Functionalities.change_Hourly_schedule(func.getHourlyState(),schedule,id_controll);
+                        shedule_Functionalities.change_Hourly_schedule(employee_Functionalities.getHourlies(),schedule,id_controll);
                     }
                     else
                     {
@@ -262,9 +260,6 @@ public class Main
                 }        
             }
             System.out.println(); 
-        
         }while(controll != 11);
-        
     }
-    
 }

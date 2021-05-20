@@ -1,38 +1,38 @@
 package functionalities;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import employee.Commissioned;
 import employee.Hourly;
 import employee.Salaried;
 
 public class Functionalities_Employee 
 {
-    public State salariedState;
-    public State commissionedState;
-    public State hourlyState;
+    private Strategy salariedStrategy;
+    private Strategy commissionedStrategy;
+    private Strategy hourlyStrategy;
 
-    State state;
+    private Strategy strategy;
 
     public Functionalities_Employee()
     {
-        salariedState = new SalariedState();
-        commissionedState = new CommissionedState();
-        hourlyState = new HourlyState();
+        salariedStrategy = new SalariedStrategy();
+        commissionedStrategy = new CommissionedStrategy();
+        hourlyStrategy = new HourlyStrategy();
     }
-
-    private void setState(String type) 
+    
+    private void setStrategy(String type) 
     {
         if(type.equals("salaried"))
         {
-            state = salariedState;
+            strategy = salariedStrategy;
         }
         else if(type.equals("commissioned"))
         {
-            state = commissionedState;
+            strategy = commissionedStrategy;
         }
         else if(type.equals("hourly"))
         {
-            state = hourlyState;
+            strategy = hourlyStrategy;
         }
         else
         {
@@ -42,49 +42,49 @@ public class Functionalities_Employee
 
     public void Register_employee(String type,int id)
     {
-        setState(type);
-        state.Register_employee(id);
+        setStrategy(type);
+        strategy.Register_employee(id);
     }
     public void Remove_employee(String type,int id) 
     {
-        setState(type);
-        state.Remove_employee(id);
+        setStrategy(type);
+        strategy.Remove_employee(id);
     }
     public void Change_employee(String type,int id)
     {
-        setState(type);
-        state.Change_employee(id);
+        setStrategy(type);
+        strategy.Change_employee(id);
     }
     public void Add_service(String type,int id)
     {
-        setState(type);
-        state.Add_service(id);
+        setStrategy(type);
+        strategy.Add_service(id);
     }
     public void Add_sale(String type,int id,int day)
     {
-        setState(type);
-        state.Add_sale(id,day);
+        setStrategy(type);
+        strategy.Add_sale(id,day);
     }
     public void Add_timecard(String type,int id,int day)
     {
-        setState(type);
-        state.Add_timecard(id,day);
+        setStrategy(type);
+        strategy.Add_timecard(id,day);
     }
 
-    public ArrayList<Salaried>  getSalariedsState() 
+    public ArrayList<Salaried> getSalarieds() 
     {
-        setState("salaried");
-        return (ArrayList<Salaried>)state.getEmployee();
+        setStrategy("salaried");
+        return (ArrayList<Salaried>)strategy.getEmployee();
     }
-    public ArrayList<Hourly> getHourlyState()
+    public ArrayList<Hourly> getHourlies()
     {
-        setState("hourly");
-        return (ArrayList<Hourly>)state.getEmployee();
+        setStrategy("hourly");
+        return (ArrayList<Hourly>)strategy.getEmployee();
     }
-    public ArrayList<Commissioned> getCommissionedState()
+    public ArrayList<Commissioned> getCommissioneds()
     {
-        setState("commissioned");
-        return (ArrayList<Commissioned>)state.getEmployee();
+        setStrategy("commissioned");
+        return (ArrayList<Commissioned>)strategy.getEmployee();
     }
 
 }
