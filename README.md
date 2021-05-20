@@ -29,7 +29,7 @@
   
   ## Move Accumulation to Collecting Parameters
   
-  This pattern was applied in [`public void Add_timecard(int id,int day)`](https://github.com/Tayco110/Refactored_Payroll/blob/main/Refactored%20Payroll/src/functionalities/HourlyStrategy.java#L347) to turn this method into a smaller and simple one, creating two new methods [`private void Check_In(int index,int day)`](https://github.com/Tayco110/Refactored_Payroll/blob/main/Refactored%20Payroll/src/functionalities/HourlyStrategy.java#L40) and [`private void Check_Out(int index,int day)`](https://github.com/Tayco110/Refactored_Payroll/blob/main/Refactored%20Payroll/src/functionalities/HourlyStrategy.java#L63).
+  This pattern was applied in [`public void Add_timecard(int id,int day)`](https://github.com/Tayco110/Refactored_Payroll/blob/main/Refactored%20Payroll/src/functionalities/HourlyStrategy.java#L347) to turn this method into a smaller and simple one, who can simple invoke two new created methods: [`private void Check_In(int index,int day)`](https://github.com/Tayco110/Refactored_Payroll/blob/main/Refactored%20Payroll/src/functionalities/HourlyStrategy.java#L40) and [`private void Check_Out(int index,int day)`](https://github.com/Tayco110/Refactored_Payroll/blob/main/Refactored%20Payroll/src/functionalities/HourlyStrategy.java#L63).
   
  
  
