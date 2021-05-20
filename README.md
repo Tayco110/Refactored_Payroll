@@ -8,9 +8,9 @@
  
   This patter was applied to the following code fragment:
   ```
-  for(index = 0;index < employees.size();index++)
+  for(index = 0;index < "employetypeArrayList".size();index++)
   {
-       employee = employees.get(index);
+       "employeetype" = "employeetypeArrayList".get(index);
        if(employee.getId() == id)
        {
          ...
