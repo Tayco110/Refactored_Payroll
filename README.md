@@ -7,7 +7,7 @@
  ## Extract Method
  
   This pattern was applied to the following code fragment:
-  ```
+  ```java
   for(index = 0;index < 'employetypeArrayList'.size();index++)
   {
        'employeetype' = 'employeetypeArrayList'.get(index);
@@ -18,7 +18,7 @@
   }
   ```
   Who was present in the following methods of the class [`Functionalities_Employee.java`](https://github.com/Tayco110/Payroll/blob/main/Payroll/src/functionalities/Functionalities_Employee.java):
-  ```
+  ```java
   public void Remove_employee(int id)
   public void Change_employee(int id)
   public void Add_service(int id)
@@ -26,7 +26,7 @@
   public void Add_timecard(int id,int day)
   ```
   To group this fragments of code and turn them in a method called: `private int SearchEmployee(int id)`.
-  ```
+  ```java
   private int SearchEmployee(int id)
    {
        int index,index_in = -1;
